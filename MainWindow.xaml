@@ -1,0 +1,28 @@
+﻿<Window x:Class="Var_9.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Var_9"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        Title="ООО Цветы" Height="1080" Width="1920" FontFamily="Comic Sans MS">
+    <Grid>
+        <Frame x:Name="MainFrame" Content= "" NavigationUIVisibility="Hidden"/>
+
+        <Label x:Name="Auth_L"  Content="Авторизация"  FontSize="32"  HorizontalAlignment="Center" Margin="0,84,0,0" VerticalAlignment="Top" />
+        <Label x:Name="Login_Lab" Content="Логин" FontSize="28" HorizontalAlignment="Center" Margin="0,304,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Password_Lab" Content="Пароль" FontSize="28" HorizontalAlignment="Center" Margin="0,430,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="Login_TB" FontSize="28" HorizontalAlignment="Center" Margin="0,376,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="450" BorderBrush="#FF498C51"/>
+        <PasswordBox x:Name="Password_TB" FontSize="28" HorizontalAlignment="Center" Margin="0,490,0,0"  VerticalAlignment="Top" Width="450" BorderBrush="#FF498C51"/>
+        <Image x:Name="Logo_IM" HorizontalAlignment="Center" Height="100" Margin="0,180,0,0" VerticalAlignment="Top" Width="100" Source="/logo.png"/>
+        <Label x:Name="Cap_Lab" Content="Каптча" FontSize="28" HorizontalAlignment="Center" Margin="0,583,0,0" VerticalAlignment="Top"/>
+        <TextBox Text=""  TextDecorations="Strikethrough" x:Name="Captha_L" FontSize="28" HorizontalAlignment="Center" Margin="0,650,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="136" IsEnabled="False" BorderBrush="White"/>
+        <Label x:Name="Cap_L2" Content="Введите каптчу" FontSize="28" HorizontalAlignment="Center" Margin="0,725,0,0" VerticalAlignment="Top"/>
+        <TextBox  x:Name="Captha_TB" FontSize="28" HorizontalAlignment="Center" Margin="0,803,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="450" BorderBrush="#FF498C51"/>
+        <Button x:Name="Log" BorderThickness="5" Content="Войти" FontSize="28" HorizontalAlignment="Center" Margin="0,868,0,0" VerticalAlignment="Top" Width="450" Background="#FF76E383" BorderBrush="#FF498C51" Foreground="Black" Height="53" Click="Log_Click" FontWeight="Bold"/>
+        <Button x:Name="Without_Log" BorderThickness="5" Content="Продолжить без авторизации" FontSize="28" HorizontalAlignment="Center" Margin="0,945,0,0" VerticalAlignment="Top" Width="450" Background="#FF76E383" BorderBrush="#FF498C51" Foreground="Black" Height="53" Click="Without_Log_Click" FontWeight="Bold"/>
+        <Label x:Name="Main_Lab" FontSize="32" Content="ООО Цветы" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+
+    </Grid>
+</Window>

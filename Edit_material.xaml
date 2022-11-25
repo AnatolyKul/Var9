@@ -1,0 +1,48 @@
+﻿<Window x:Class="Var_9.Edit_material"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Var_9"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        Title="ООО Цветы" Height="1080" Width="1920" FontFamily="Comic Sans MS">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="190"  />
+            <RowDefinition Height="Auto"  />
+            <RowDefinition Height="1*"  />
+
+        </Grid.RowDefinitions>
+
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="1*" />
+            <ColumnDefinition  Width="520" />
+            <ColumnDefinition  Width="1*" />
+
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" DataContext="{Binding Product}" >
+            <Label  FontSize="24">Наименование</Label>
+            <TextBox BorderThickness="5" BorderBrush="#FF498C51" IsReadOnly="True" Text="{Binding ProductName}" FontSize="24"></TextBox>
+            <Label FontSize="24">Цена</Label>
+            <TextBox  BorderThickness="5" BorderBrush="#FF498C51" Text="{Binding ProductCost}" FontSize="24"></TextBox>
+            <Label FontSize="24">Категория товара</Label>
+            <ComboBox SelectedItem="{Binding Category}" BorderThickness="5" BorderBrush="Black" DisplayMemberPath="NameCategory" Name="C_B_MaterialType" FontSize="24"></ComboBox>
+            <Label FontSize="24">Единица измерения</Label>
+            <ComboBox SelectedItem="{Binding UnitProduct}" BorderThickness="5" BorderBrush="Black" DisplayMemberPath="NameUnit" Name="C_B_Unit" FontSize="24" ></ComboBox>
+            <Label FontSize="24">Количество на складе</Label>
+            <TextBox BorderThickness="5" BorderBrush="#FF498C51" Text="{Binding ProductQuantityInStock}" FontSize="24"></TextBox>
+            <Label FontSize="24">Действующая скидка</Label>
+            <TextBox BorderThickness="5" BorderBrush="#FF498C51" Text="{Binding ProductDiscountAmount}" FontSize="24" ></TextBox>
+
+            <Label FontSize="24">Изображение</Label>
+            <Image Height="150" Width="150" Source="{Binding ProductPhoto}"></Image>
+            <Button x:Name="Add_Image" Background="#FF76E383" FontWeight="DemiBold" Foreground="Black" BorderThickness="5" BorderBrush="#FF498C51" FontSize="24" Click="Add_Image_Click" >Выбрать новое изображение</Button>
+            <Button x:Name="Save" Background="#FF76E383" FontWeight="DemiBold" Foreground="Black" BorderThickness="5" BorderBrush="#FF498C51" FontSize="24" Margin="0 19 0 0" Click="Save_Click"   >Сохранить</Button>
+        </StackPanel>
+        <Label Grid.Column="1" FontWeight="Bold" Content="ООО &quot;Цветы&quot;" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="28"/>
+        <Image Grid.Column="1" HorizontalAlignment="Center" Height="100" Margin="0,80,0,0" VerticalAlignment="Top" Width="100" Source="/logo.png"/>
+    </Grid>
+</Window>
