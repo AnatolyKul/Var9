@@ -1,6 +1,6 @@
-create database [TTT]
+create database [Trade]
 go
-use [TTT]
+use [Trade]
 go
 create table [Role]
 (
@@ -14,36 +14,36 @@ create table [User]
 	UserSurname nvarchar(100) not null,
 	UserName nvarchar(100) not null,
 	UserPatronymic nvarchar(100) not null,
-	UserLogin nvarchar(200) not null,
-	UserPassword nvarchar(200) not null,
+	UserLogin nvarchar(max) not null,
+	UserPassword nvarchar(max) not null,
 	UserRole int foreign key references [Role](RoleID) not null
 )
-
 go
 
-create table UnitProduct
+create table Manufacturer 
 (
-  [Name] varchar (5) primary key
+  [Name] nvarchar (100) primary key not null
 )
 
 go
 
-create table ManufacturerProduct
+create table [Provider] 
 (
-  [Name] nvarchar (200) primary key
+  [Name] nvarchar (100) primary key not null
 )
 
 go
 
-create table [Provider]
+create table Category 
 (
-  [Name] nvarchar (200) primary key
+  [Name] nvarchar (100) primary key not null
 )
 
 go
-create table CategoryProduct
+
+create table Unit 
 (
-  [Name] nvarchar (200) primary key
+  [Name] nvarchar (4) primary key not null
 )
 
 go
@@ -51,44 +51,52 @@ create table Product
 (
 	ProductArticleNumber nvarchar(100) primary key,
 	ProductName nvarchar(max) not null,
-	Unit varchar (5) foreign key references UnitProduct ([Name]),
+	UnitProduct nvarchar(4) foreign key references Unit ([Name]),
 	ProductCost decimal(19,4) not null,
-	ProductDiscountAmount int null,
-	Manufacturer nvarchar (200) foreign key references ManufacturerProduct ([Name]),
-	[Provider] nvarchar (200) foreign key references [Provider] ([Name]),
-	Category nvarchar (200) foreign key references CategoryProduct([Name]),
-	[CurrentDiscount] int,
+	ProductDiscountAmount int,
+	ProductManufacturer nvarchar(100) foreign key references Manufacturer ([Name]),
+	ProductProvider nvarchar(100) foreign key references [Provider] ([Name]),
+	ProductCategory nvarchar(100) foreign key references [Category] ([Name]),
+	ProductDiscount int,
 	ProductQuantityInStock int not null,
 	ProductDescription nvarchar(max) not null,
-	ProductPhoto varchar(100) not null
+	ProductPhoto varchar (50) not null
 )
+go
 
+create table Order_Status 
+(
+  [Name] nvarchar (30) primary key not null
+)
 
 go
 
 create table PickupPoint
 (
-  IDPoint int primary key,
-  Adress varchar (150)
-  
+ ID int primary key identity  not null,
+ [Index] varchar (10),
+ Adress varchar (200)
 )
 
 go
 
 create table [Order]
 (
-	OrderID int primary key identity,
-	DateOrder date,
+	OrderID int primary key,
+	OrderDate date,
 	OrderDeliveryDate datetime not null,
-	OrderPickupPoint int foreign key references PickupPoint (IDPoint) not null,
-	Client int foreign key references [User] (UserID),
-	Code int,
-	OrderStatus nvarchar(30) not null
+	OrderPickupPoint nvarchar(max) not null,
+	Client int foreign key references [User] ([UserID]),
+	Code varchar (4),
+	OrderStatus nvarchar(30) foreign key references Order_Status ([Name])
 )
+
+go
 
 create table OrderProduct
 (
 	OrderID int foreign key references [Order](OrderID) not null,
 	ProductArticleNumber nvarchar(100) foreign key references Product(ProductArticleNumber) not null,
+	CountProduct int,
 	Primary key (OrderID,ProductArticleNumber)
 )
